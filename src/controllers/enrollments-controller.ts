@@ -6,9 +6,9 @@ import { enrollmentsService } from '@/services';
 export async function getEnrollmentByUser(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
 
-  const enrollmentWithAddress = await enrollmentsService.getOneWithAddressByUserId(userId);
+  //const enrollmentWithAddress = await enrollmentsService.getOneWithAddressByUserId(userId);
 
-  return res.status(httpStatus.OK).send(enrollmentWithAddress);
+  //return res.status(httpStatus.OK).send(enrollmentWithAddress);
 }
 
 export async function postCreateOrUpdateEnrollment(req: AuthenticatedRequest, res: Response) {
@@ -22,7 +22,7 @@ export async function postCreateOrUpdateEnrollment(req: AuthenticatedRequest, re
 
 // TODO - Receber o CEP do usuário por query params.
 export async function getAddressFromCEP(req: AuthenticatedRequest, res: Response) {
-  const { cep } = req.params;
+  const cep = req.params.cep;
   const address = await enrollmentsService.getAddressFromCEP(cep);
   res.status(httpStatus.OK).send(address);
 }

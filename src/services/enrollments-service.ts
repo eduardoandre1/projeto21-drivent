@@ -23,19 +23,19 @@ async function getAddressFromCEP(cep: string) {
   return result;
 }
 
-async function getOneWithAddressByUserId(userId: number): Promise<GetOneWithAddressByUserIdResult> {
-  const enrollmentWithAddress = await enrollmentRepository.findWithAddressByUserId(userId);
+//async function getOneWithAddressByUserId(userId: number): Promise<GetOneWithAddressByUserIdResult> {
+//const enrollmentWithAddress = await enrollmentRepository.findWithAddressByUserId(userId);
 
-  if (!enrollmentWithAddress) throw notFoundError();
+//if (!enrollmentWithAddress) throw notFoundError();
 
-  const [firstAddress] = enrollmentWithAddress.Address;
-  const address = getFirstAddress(firstAddress);
+// const [firstAddress] = enrollmentWithAddress.Address;
+//const address = getFirstAddress(firstAddress);
 
-  return {
-    ...exclude(enrollmentWithAddress, 'userId', 'createdAt', 'updatedAt'),
-    ...(!!address && { address }),
-  };
-}
+// return {
+//  ...exclude(enrollmentWithAddress, 'userId', 'createdAt', 'updatedAt'),
+//   ...(!!address && { address }),
+// };
+//}
 
 type GetOneWithAddressByUserIdResult = Omit<Enrollment, 'userId' | 'createdAt' | 'updatedAt'>;
 
@@ -71,7 +71,7 @@ export type CreateOrUpdateEnrollmentWithAddress = CreateEnrollmentParams & {
 };
 
 export const enrollmentsService = {
-  getOneWithAddressByUserId,
+  //getOneWithAddressByUserId,
   createOrUpdateEnrollmentWithAddress,
   getAddressFromCEP,
 };
